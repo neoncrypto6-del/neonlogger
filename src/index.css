@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* ===== ROOT VARIABLES ===== */
+:root {
+  --purple-neon: #8b5cf6;
+  --gold-neon: #f59e0b;
+  --bg-deep: #0a0010;
+  --neon-orange-lavender: linear-gradient(135deg, #ff6b35 0%, #f59e0b 30%, #c084fc 70%, #8b5cf6 100%);
+}
+/* ===== BASE ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0a0010 !important;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+#root {
+  background: #0a0010;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+/* ===== GLASS ===== */
+.glass {
+  background: rgba(139, 92, 246, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+.glass-card {
+  background: rgba(10, 0, 16, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  transition: all 0.3s ease;
+}
+.glass-card:hover {
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+}
+/* ===== MODAL OVERLAY (no glitch) ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+/* ===== NEON ORANGE-LAVENDER GRADIENT TEXT ===== */
+.text-neon-gradient {
+  background: linear-gradient(135deg, #ff6b35 0%, #f59e0b 30%, #c084fc 70%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.btn-neon-gradient {
+  background: linear-gradient(135deg, #ff6b35 0%, #f59e0b 30%, #c084fc 70%, #8b5cf6 100%);
+  color: white;
+}
+/* ===== GLOW ===== */
+.text-glow {
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.6), 0 0 40px rgba(255, 107, 53, 0.3);
+}
+.text-glow-gold {
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+/* ===== TICKER - SLOW ===== */
+@keyframes ticker-slow {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes ticker-slow-reverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-ticker {
+  animation: ticker-slow 60s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.animate-ticker-reverse {
+  animation: ticker-slow-reverse 60s linear infinite;
+  display: flex;
+  width: max-content;
+}
+/* ===== BOTTOM TICKER (prices bar) ===== */
+@keyframes ticker-bottom {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-ticker-bottom {
+  animation: ticker-bottom 50s linear infinite;
+  display: flex;
+  width: max-content;
+}
+/* ===== SLIDE IN FOR NOTIFICATIONS ===== */
+@keyframes slideInLeft {
+  from { transform: translateX(-110%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes slideOutLeft {
+  from { transform: translateX(0);    opacity: 1; }
+  to   { transform: translateX(-110%); opacity: 0; }
+}
+.notif-enter { animation: slideInLeft 0.4s ease-out forwards; }
+.notif-exit  { animation: slideOutLeft 0.4s ease-in  forwards; }
+/* ===== CONFETTI ===== */
+@keyframes confetti-fall {
+  0%   { transform: translateY(-100vh) rotate(0deg);   }
+  100% { transform: translateY(100vh)  rotate(360deg); }
+}
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  animation: confetti-fall 4s linear infinite;
+}
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0010; }
+::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 3px; }
+/* ===== SPIN ===== */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
